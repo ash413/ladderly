@@ -1,6 +1,6 @@
 <?php
     header("Content-Type: application/json");
-    header("Access-Control-Allow-Origins: *"); //ANGULAR
+    header("Access-Control-Allow-Origin: *"); //ANGULAR
     header("Access-Control-Allow-Methods: POST");
     header("Access-Control-Allow-Headers: Content-Type");
 
@@ -24,6 +24,10 @@
         
     try{
         mysqli_query($conn, $sql);
+        
+        session_start();
+        $_SESSION["username"] = $username;
+        
         echo json_encode(["error" => "user registered"]);
     } catch(mysqli_sql_exception){
         echo json_encode(["Error" => "username already taken"]);

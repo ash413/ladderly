@@ -33,7 +33,7 @@
 
     $sql = "DELETE FROM applications WHERE id = '$app_id' AND user_id = '$user_id' ";
     if (mysqli_query($conn, $sql)) {
-        echo json_encode(["Error" => "application deleted"]);
+        echo json_encode(["message" => "application deleted"]);
     } else {
         echo json_encode(["Error" => "failed to delete applications"]);
     }
